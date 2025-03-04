@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luca Weber | Portfolio</title>
+  <link rel="icon" type="image/x-icon" href="pfp.jpg">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Raleway:wght@300;600&family=Poppins:wght@400;600&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Raleway', sans-serif;
+      background-image: url('1126605.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: white;
+      text-align: center;
+      scroll-behavior: smooth;
+      background-color: #050505;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      padding: 15px 0;
+      z-index: 1000;
+      box-shadow: 0 0 10px #00cccc;
+    }
+
+    .logo {
+      font-size: 50px;
+      font-weight: bold;
+      font-family: 'Orbitron', sans-serif;
+      color: #00cccc;
+      letter-spacing: 3px;
+      text-shadow: 0 0 10px #00cccc, 0 0 20px #005577;
+      animation: glow 1.5s infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #00cccc, 0 0 20px #005577;
+      }
+
+      to {
+        text-shadow: 0 0 20px #00cccc, 0 0 30px #005577;
+      }
+    }
+
+    .home {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+    }
+
+    .profile-pic img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 5px solid #00cccc;
+      box-shadow: 0 0 20px #00cccc;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .profile-pic img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 30px #00cccc;
+    }
+
+    .special-text {
+      font-size: 1.8em;
+      font-weight: bold;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #00cccc, #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 10px 20px;
+    }
+
+    .sub-text {
+      font-size: 1.2em;
+      max-width: 600px;
+      line-height: 1.5;
+      color: #ccc;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      width: 80%;
+      max-width: 1000px;
+      margin: 50px auto;
+    }
+
+    .section-box {
+      background: rgba(10, 10, 10, 0.9);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #00cccc;
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out forwards;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .bot-pfp {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin-top: 10px;
+      border: 3px solid #00cccc;
+      box-shadow: 0 0 10px #00cccc;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">Hey There!👋</div>
+  </header>
+
+  <section class="home">
+    <div class="profile-pic">
+      <img src="pfp.jpg" alt="Profile Picture">
+    </div>
+    <h1 class="logo">Luca Weber</h1>
+    <p class="special-text">Graphics Designer & Web Designer</p>
+    <p class="sub-text">I'm Luca Weber, a visionary creative from Zurich, now based in Dubai. Passionate about crafting
+      stunning visuals and intuitive web designs, I turn ideas into digital masterpieces.</p>
+    <p class="sub-text">A free spirit with an eye for elegance, I blend simplicity with sophistication.</p>
+  </section>
+
+  <div class="container">
+    <div class="section-box">
+      <h2>About Me</h2>
+      <p><strong>Name:</strong> Luca Weber</p>
+      <p><strong>Age:</strong> 18</p>
+      <p><strong>Location:</strong> Dubai, UAE</p>
+      <p><strong>Status:</strong> Happily Taken ❤️</p>
+    </div>
+    <div class="section-box">
+      <h2>Expertise</h2>
+      <p>Proficient in Photoshop, Illustrator, Python, HTML, CSS, JavaScript.</p>
+      <p>Looking for more opportunities!</p>
+    </div>
+    <div id="portfolio" class="section-box">
+      <h2 class="highlight">Portfolio</h2>
+      <p>Showcase of my best work in graphics and web design.</p>
+      <h3>Zayanator - Discord Bot</h3>
+      <img src="zayanator.png" alt="Zayanator PFP" class="bot-pfp">
+      <p>Zayanator is a powerful Discord bot built for automation, entertainment, and server management. It enhances
+        community engagement with advanced features, making Discord servers more dynamic and fun.</p>
+    </div>
+    <div class="section-box">
+      <h2>Contact</h2>
+      <p>Let’s create something amazing together! Reach me via Discord:</p>
+      <p>.luca.26 (1323664472463642624)</p>
+    </div>
+  </div>
+</body>
+
+</html>
