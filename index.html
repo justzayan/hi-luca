@@ -7,8 +7,85 @@
   <title>Luca Weber | Portfolio</title>
   <link rel="icon" type="image/x-icon" href="pfp.jpg">
   <style>
+    /* Import Google Fonts */
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Raleway:wght@300;600&family=Poppins:wght@400;600&display=swap');
 
+    /* Keyframe Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes waveAnimation {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      20% {
+        transform: rotate(15deg);
+      }
+
+      40% {
+        transform: rotate(-10deg);
+      }
+
+      60% {
+        transform: rotate(10deg);
+      }
+
+      80% {
+        transform: rotate(-5deg);
+      }
+
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+
+    /* General Styles */
     body {
       margin: 0;
       font-family: 'Raleway', sans-serif;
@@ -30,16 +107,23 @@
       padding: 15px 0;
       z-index: 1000;
       box-shadow: 0 0 10px #00cccc;
+      animation: fadeInDown 1s ease-in-out;
     }
 
     .logo {
-      font-size: 40px;
+      font-size: 50px;
       font-weight: bold;
       font-family: 'Orbitron', sans-serif;
       color: #00cccc;
       letter-spacing: 3px;
       text-shadow: 0 0 10px #00cccc, 0 0 20px #005577;
       animation: glow 1.5s infinite alternate;
+    }
+
+    .logo span {
+      display: inline-block;
+      animation: waveAnimation 2s infinite ease-in-out;
+      transform-origin: 70% 70%;
     }
 
     @keyframes glow {
@@ -60,15 +144,17 @@
       align-items: center;
       background: rgba(0, 0, 0, 0.7);
       padding: 20px;
+      animation: fadeInUp 1s ease-in-out;
     }
 
     .profile-pic img {
-      width: 150px;
-      height: 150px;
+      width: 180px;
+      height: 180px;
       border-radius: 50%;
       border: 5px solid #00cccc;
       box-shadow: 0 0 20px #00cccc;
       transition: transform 0.3s, box-shadow 0.3s;
+      animation: fadeInUp 1.5s ease-in-out;
     }
 
     .profile-pic img:hover {
@@ -77,7 +163,7 @@
     }
 
     .special-text {
-      font-size: 1.5em;
+      font-size: 1.8em;
       font-weight: bold;
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(to right, #00cccc, #ffffff);
@@ -87,60 +173,117 @@
     }
 
     .sub-text {
-      font-size: 1em;
+      font-size: 1.2em;
       max-width: 600px;
       line-height: 1.5;
       color: #ccc;
     }
 
-    .container {
+    .about-container {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
-      width: 90%;
+      width: 80%;
       max-width: 1000px;
       margin: 50px auto;
     }
 
     .section-box {
       background: rgba(10, 10, 10, 0.9);
-      padding: 20px;
+      padding: 30px;
       border-radius: 15px;
       box-shadow: 0 0 20px #00cccc;
       opacity: 0;
-      animation: fadeIn 1s ease-in-out forwards;
+      animation: fadeInUp 1s ease-in-out forwards;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
     }
 
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
+    .projects {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 80%;
+      max-width: 1000px;
+      margin: 50px auto;
+    }
+
+    .project {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(10, 10, 10, 0.9);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #00cccc;
+    }
+
+    .projects .project:nth-child(odd) {
+      animation: fadeInLeft 1s ease-in-out;
+    }
+
+    .projects .project:nth-child(even) {
+      animation: fadeInRight 1s ease-in-out;
     }
 
     .bot-pfp {
-      width: 70px;
-      height: 70px;
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
-      margin-top: 10px;
+      margin: 10px;
       border: 3px solid #00cccc;
       box-shadow: 0 0 10px #00cccc;
     }
 
-    @media (max-width: 768px) {
+    .social-media-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+      animation: fadeInUp 1s ease-in-out;
+    }
+
+    .social-logo {
+      width: 50px;
+      height: 50px;
+      border-radius: 10px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .social-logo:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px #00cccc;
+    }
+
+    /* Responsive Design */
+    @media screen and (max-width: 768px) {
       .logo {
         font-size: 30px;
       }
 
-      .special-text {
-        font-size: 1.2em;
+      .profile-pic img {
+        width: 120px;
+        height: 120px;
       }
 
-      .container {
-        grid-template-columns: 1fr;
+      .special-text {
+        font-size: 1.3em;
+      }
+
+      .sub-text {
+        font-size: 0.9em;
+      }
+
+      .about-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .projects {
+        flex-direction: column;
+        align-items: center;
       }
     }
   </style>
@@ -148,9 +291,8 @@
 
 <body>
   <header>
-    <div class="logo">Hey There!👋</div>
+    <div class="logo">Hey There! <span>👋</span></div>
   </header>
-
   <section class="home">
     <div class="profile-pic">
       <img src="pfp.jpg" alt="Profile Picture">
@@ -158,32 +300,72 @@
     <h1 class="logo">Luca Weber</h1>
     <p class="special-text">Graphics Designer & Web Designer</p>
     <p class="sub-text">I'm Luca Weber, a visionary creative from Zurich, now based in Dubai. Passionate about crafting
-      stunning visuals and intuitive web designs.</p>
+      stunning visuals and intuitive web designs.
+    </p>
+    <p class="sub-text">A free spirit with an eye for elegance, I blend simplicity with sophistication.</p>
   </section>
 
-  <div class="container">
-    <div class="section-box">
-      <h2>About Me</h2>
-      <p><strong>Name:</strong> Luca Weber</p>
-      <p><strong>Age:</strong> 18</p>
-      <p><strong>Location:</strong> Dubai, UAE</p>
-      <p><strong>Status:</strong> Happily Taken ❤️</p>
+  <h2>About Me</h2>
+  <div class="about-container">
+    <div class="section-box">Name: Luca Weber</div>
+    <div class="section-box">Date Of Birth: 26th March 2006 </div>
+    <div class="section-box">Location: Dubai, UAE</div>
+    <div class="section-box">Status: Happily Taken ❤️</div>
+    <div class="section-box">Expertise: Photoshop, Illustrator, HTML, CSS, JS</div>
+    <div class="section-box">Looking for more opportunities!</div>
+  </div>
+
+  <h2>Portfolio</h2>
+  <div class="projects">
+    <div class="project">
+      <img src="zayanator.png" alt="Project 1" class="bot-pfp">
+      <div>
+        <h3>Project 1: Zayanator Discord Bot</h3>
+        <p>A versatile private Discord bot offering a range of engaging activities while ensuring seamless server
+          moderation. Tailored to enhance user experience and streamline community management effortlessly. </p>
+      </div>
     </div>
-    <div class="section-box">
-      <h2>Expertise</h2>
-      <p>Proficient in Photoshop, Illustrator, Python, HTML, CSS, JavaScript.</p>
+    <div class="project">
+      <img src="blitz.png" alt="Project 2" class="bot-pfp">
+      <div>
+        <h3>Project 2: Blitz Soccer - Discord Bot </h3>
+        <p>Owned by three, with myself as one of the creators, I handle all the design and visuals for the bot. My focus
+          is on delivering an aesthetic and engaging user experience. </p>
+      </div>
     </div>
-    <div id="portfolio" class="section-box">
-      <h2 class="highlight">Portfolio</h2>
-      <h3>Zayanator - Discord Bot</h3>
-      <img src="zayanator.png" alt="Zayanator PFP" class="bot-pfp">
-      <p>A powerful Discord bot built for automation and entertainment.</p>
+    <div class="project">
+      <img src="war.png" alt="Project 3" class="bot-pfp">
+      <div>
+        <h3>Project 3: Website for War Against Rivals Tournament</h3>
+        <p>WAR AGAINST RIVALS (WAR): A fast-paced Blitz Soccer tournament, bringing fierce competition and seamless
+          management through an intuitive website. Perfect for rival teams to clash and claim victory! </p>
+      </div>
     </div>
-    <div class="section-box">
-      <h2>Contact</h2>
-      <p>Reach me via Discord: .luca.26 (1323664472463642624)</p>
+    <div class="project">
+      <img src="pfp.jpg" alt="Project 4" class="bot-pfp">
+      <div>
+        <h3>Project 4: Personal Designer </h3>
+        <p>A customizable design tool tailored for creating unique, high-quality visuals. Whether it's for social media,
+          websites, or personal branding, this platform empowers users to craft professional designs effortlessly. </p>
+      </div>
     </div>
   </div>
+
+  <h2>Contact</h2>
+  <section id="contact" class="section-box">
+    <p>Let’s create something amazing together! Reach me via:</p>
+    <div class="social-media-links">
+      <a href="https://discord.com/users/1323664472463642624" target="_blank">
+        <img src="https://support.discord.com/hc/user_images/PRywUXcqg0v5DD6s7C3LyQ.jpeg" alt="Discord"
+          class="social-logo">
+      </a>
+      <a href="https://github.com/justzayan" target="_blank">
+        <img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_960_720.png" alt="GitHub"
+          class="social-logo">
+      </a>
+    </div>
+  </section>
+
 </body>
 
 </html>
