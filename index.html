@@ -148,14 +148,19 @@
     }
 
     .profile-pic img {
-      width: 150px;
-      height: 150px;
+      width: 180px;
+      height: 180px;
       border-radius: 50%;
       border: 5px solid #00cccc;
       box-shadow: 0 0 20px #00cccc;
       transition: transform 0.3s, box-shadow 0.3s;
       animation: fadeInUp 1.5s ease-in-out;
+      object-fit: cover;
+      object-position: center top;
+      /* Moves the image up */
     }
+
+
 
     .profile-pic img:hover {
       transform: scale(1.1);
@@ -230,12 +235,32 @@
 
     .bot-pfp {
       width: 80px;
+      /* Ensure it's a square */
       height: 80px;
       border-radius: 50%;
-      margin: 10px;
+      /* Makes it a circle */
       border: 3px solid #00cccc;
       box-shadow: 0 0 10px #00cccc;
+      object-fit: cover;
+      /* Prevents stretching */
+      object-position: center top;
+      /* Moves the image up */
     }
+
+    .projects .project:nth-child(4) .bot-pfp {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 3px solid #00cccc;
+      box-shadow: 0 0 10px #00cccc;
+      object-fit: cover;
+      object-position: center top;
+      /* Moves the image up */
+      aspect-ratio: 1 / 1;
+      /* Ensures a perfect square before rounding */
+    }
+
+
 
     .social-media-links {
       display: flex;
@@ -311,7 +336,7 @@
     <div class="section-box">Date Of Birth: 26th March 2006 </div>
     <div class="section-box">Location: Dubai, UAE</div>
     <div class="section-box">Status: Happily Taken ❤️</div>
-    <div class="section-box">Expertise: Photoshop, Python, HTML, CSS, JS</div>
+    <div class="section-box">Expertise: Photoshop, Illustrator, HTML, CSS, JS</div>
     <div class="section-box">Looking for more opportunities!</div>
   </div>
 
