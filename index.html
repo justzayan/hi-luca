@@ -10,15 +10,39 @@
     body {
       font-family: 'Inter', sans-serif;
     }
+    .main-content {
+      transition: transform 0.3s ease-in-out, margin-left 0.3s ease-in-out;
+    }
+    .sidebar-open .main-content {
+      transform: translateX(250px);
+    }
+    .sidebar-backdrop {
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(5px);
+      transition: opacity 0.3s ease-in-out;
+    }
   </style>
 </head>
-<body class="bg-gray-950 text-white flex flex-col items-center justify-center min-h-screen p-4 antialiased">
+<body class="bg-gray-950 text-white flex min-h-screen antialiased">
 
-  <div class="flex flex-col items-center w-full max-w-7xl">
-    <h1 class="text-4xl md:text-5xl font-extrabold text-rose-500 uppercase tracking-widest text-center mb-6"
-      style="text-shadow: 0 0 15px #e11d48;">
-      Bloodline Xecution - Season 1
-    </h1>
+  <aside id="sidebar" class="fixed top-0 left-0 z-40 w-64 h-full bg-gray-900 border-r-2 border-rose-500 transform -translate-x-full transition-transform duration-300 ease-in-out shadow-lg" style="box-shadow: 0 0 20px #e11d48;">
+    <div class="p-6 flex flex-col items-center">
+      <h2 class="text-2xl font-extrabold text-rose-500 uppercase tracking-widest mt-4 mb-8 text-center" style="text-shadow: 0 0 10px #e11d48;">Stages</h2>
+      <button id="intermediate-btn" class="w-full text-left p-3 mb-4 rounded-lg font-bold text-gray-300 hover:bg-rose-500 hover:text-white transition-colors duration-200">Intermediate Stage</button>
+      <button id="group-btn" class="w-full text-left p-3 rounded-lg font-bold text-gray-300 hover:bg-rose-500 hover:text-white transition-colors duration-200">Group Stage</button>
+    </div>
+  </aside>
+
+  <div id="main-content" class="flex flex-col items-center w-full max-w-7xl mx-auto p-4 md:p-8">
+    <div class="flex items-center w-full mb-6">
+      <button id="menu-btn" class="md:hidden text-rose-500 focus:outline-none z-50">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+      <h1 class="flex-1 text-4xl md:text-5xl font-extrabold text-rose-500 uppercase tracking-widest text-center"
+        style="text-shadow: 0 0 15px #e11d48;">
+        Bloodline Xecution - Season 1
+      </h1>
+    </div>
 
     <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4 my-8 w-full justify-center px-2">
       <label for="group-select" class="text-gray-300 font-bold text-lg md:text-xl whitespace-nowrap">Select Group:</label>
@@ -27,9 +51,6 @@
           id="group-select"
           class="w-full bg-gray-900 text-rose-400 border-2 border-rose-500 rounded-lg p-3 appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-rose-300"
           style="box-shadow: 0 0 10px #e11d48, inset 0 0 10px #e11d48;">
-          <option value="Group A" class="bg-gray-950 text-rose-400">Group A</option>
-          <option value="Group B" class="bg-gray-950 text-rose-400">Group B</option>
-          <option value="Group C" class="bg-gray-950 text-rose-400">Group C</option>
         </select>
         <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
@@ -72,11 +93,55 @@
       ],
     };
 
+    const intermidiateData = {
+      'Group X': [
+        { team: 'The Assassins', p: 0, w: 0, d: 0, l: 0, pts: 0, icon: 'https://media.discordapp.net/attachments/1395117924926230723/1402904181357940828/0b347a158602a1a594eaa2ba197c7ba2.webp?ex=68a37395&is=68a22215&hm=84a2110db5a8198cdbb76acdf9aaf04c85f1a951a98f842b6fa89ab47581c1f4&=&format=webp&width=743&height=743' },
+        { team: 'Ancient United', p: 1, w: 0, d: 0, l: 1, pts: 0, icon: 'https://media.discordapp.net/attachments/1395117924926230723/1402904181890613308/48bf1b0e-aaa6-4e47-a5bf-b1bd69b15414.webp?ex=68a37395&is=68a22215&hm=93e535370f74d132dd0fb9dfad5cbf3c894abd286226e676b4ea3920cc580ae5&=&format=webp' },
+        { team: 'Dynamic Spartans', p: 1, w: 1, d: 0, l: 0, pts: 2, icon: 'https://media.discordapp.net/attachments/1395117924926230723/1402903799118561342/Dynamic_SpartansDSP.webp?ex=68a3733a&is=68a221ba&hm=e3b41ff55ff9a9dfffbe41001de444b18b3e1d54af95707903cd547f299af418&=&format=webp' },
+        { team: 'Saste Nukers', p: 1, w: 0, d: 0, l: 1, pts: 0, icon: 'https://media.discordapp.net/attachments/1395117924926230723/1402904705159532596/lv_0_20240824163225_exported_0-1.webp?ex=689c33d2&is=689ae252&hm=dc5d205da3c503aeb2641333b35ebfa5ef72eb65942d5cb92952350b7f01976e&=&format=webp&width=743&height=743' },
+        { team: 'The Eternals', p: 1, w: 1, d: 0, l: 0, pts: 2, icon: 'https://media.discordapp.net/attachments/1395117924926230723/1402903799672340584/IMG-20250701-WA0006.webp?ex=68a3733a&is=68a221ba&hm=c5648d5ee58a13a2426f1ceaf18cd8b8c605b3e37c5b369dde1060f2829c2d88&=&format=webp&width=743&height=743' },
+        { team: 'The Blues', p: 0, w: 0, d: 0, l: 0, pts: 0, icon: 'https://media.discordapp.net/attachments/1395117924926230723/1402903797885440090/Picsart_24-12-30_11-40-42-710.webp?ex=689c32fa&is=689ae17a&hm=bc00730b126bd482803526b1819e03762aed9af8a4cd55cccfdb65f3b2a88e2d&=&format=webp&width=743&height=743' },
+      ],
+      'Group Y': [
+        { team: 'Bloodline Family', p: 0, w: 0, d: 0, l: 0, pts: 0, icon: 'https://media.discordapp.net/attachments/1395117924926230723/1402904705516044288/dfsf9e4-f54b0976-64f5-46fe-b4e2-30462633c029.jpg?ex=689c33d2&is=689ae252&hm=19ca02901f3e08bb77e11bc30972d6e3273b2d0461bb5367b4d482a183688e50&=&format=webp&width=675&height=743' },
+        { team: 'Chokers 49', p: 1, w: 1, d: 0, l: 0, pts: 2, icon: 'https://media.discordapp.net/attachments/1395117924926230723/1402903799957422121/raw.webp?ex=689c32fa&is=689ae17a&hm=5ebd493c8eb54a2cf09a41f41c1c110a3b7539bd1cf75ec0e6c27cc0e7481eda&=&format=webp&width=743&height=743' },
+        { team: 'Cricket Realm', p: 1, w: 0, d: 0, l: 1, pts: 0, icon: 'https://media.discordapp.net/attachments/1395117924926230723/1402904182498787349/07a753c37efcf51129fc871baf08ba95.webp?ex=68a37395&is=68a22215&hm=860b26d168c388355da7c7049d8be01ba73c5b0970083aae1ecaefb868240c42&=&format=webp' },
+        { team: 'Final Strike', p: 1, w: 0, d: 0, l: 1, pts: 0, icon: 'https://media.discordapp.net/attachments/1395117924926230723/1402903798858383391/1650785613613-1.webp?ex=68a3733a&is=68a221ba&hm=48112176cc8a633d9008849ccb35f8d0ac0c8ae30c38132f49385f443f5449c8&=&format=webp' },
+        { team: 'Peak Unemployment', p: 1, w: 1, d: 0, l: 0, pts: 2, icon: 'https://media.discordapp.net/attachments/1395117924926230723/1402903798623768629/87f9774eb3cd2b31563c5a184cace878.webp?ex=68a3733a&is=68a221ba&hm=0f2a4599b2254e1ef7f304c27e2ada8448cb28678d1cd0689744c87380eef724&=&format=webp' },
+        { team: 'Cricket Hurricanes', p: 0, w: 0, d: 0, l: 0, pts: 0, icon: 'https://media.discordapp.net/attachments/1395117924926230723/1402903798258860083/ChatGPT_Image_Apr_19_2025_01_27_18_PM.webp?ex=68a3733a&is=68a221ba&hm=67e76b3da38e7c599a13b991635bc6762a3037a08ec47d30627724595d099c72&=&format=webp&width=743&height=743' },
+      ],
+    };
+
     const groupSelect = document.getElementById('group-select');
     const tableContainer = document.getElementById('points-table-container');
+    const intermediateBtn = document.getElementById('intermediate-btn');
+    const groupBtn = document.getElementById('group-btn');
+    const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.getElementById('sidebar');
+
+    let selectedStage = 'intermediate'; // 'intermediate' or 'group'
+
+    function renderGroupsList() {
+      const groups = selectedStage === 'intermediate' ? intermidiateData : initialData;
+      const groupNames = Object.keys(groups);
+
+      groupSelect.innerHTML = '';
+      groupNames.forEach(name => {
+        const option = document.createElement('option');
+        option.value = name;
+        option.textContent = name;
+        groupSelect.appendChild(option);
+      });
+
+      // Automatically render the first group's table
+      if (groupNames.length > 0) {
+        renderPointsTable(groupNames[0]);
+      }
+    }
 
     function renderPointsTable(groupName) {
-      let data = [...initialData[groupName]];
+      const dataSet = selectedStage === 'intermediate' ? intermidiateData : initialData;
+      let data = [...dataSet[groupName]];
 
       data.sort((a, b) => {
         if (b.pts !== a.pts) return b.pts - a.pts;
@@ -90,18 +155,10 @@
         <div class="bg-gray-900 border-4 border-rose-500 rounded-3xl p-4 md:p-6 w-full"
           style="box-shadow: 0 0 20px #e11d48, inset 0 0 20px #e11d48;">
           <div class="flex items-center justify-between mb-4 md:mb-6">
-            <div class="flex items-center text-rose-400 cursor-pointer select-none">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2">
-                <polyline points="15 18 9 12 15 6" />
-              </svg>
-              <span class="font-bold text-sm md:text-base">Back</span>
-            </div>
             <h2 class="text-lg md:text-2xl font-extrabold tracking-wide text-rose-400 text-center uppercase flex-1"
                 style="text-shadow: 0 0 10px #e11d48;">
-              League Points Table - ${groupName}
+              Points Table - ${groupName}
             </h2>
-            <div class="w-6"></div>
           </div>
 
           <div class="overflow-x-auto">
@@ -147,17 +204,39 @@
       tableContainer.innerHTML = tableHtml;
     }
 
+    // Event listeners for sidebar buttons
+    intermediateBtn.addEventListener('click', () => {
+      selectedStage = 'intermediate';
+      renderGroupsList();
+      intermediateBtn.classList.add('bg-rose-500', 'text-white');
+      groupBtn.classList.remove('bg-rose-500', 'text-white');
+    });
+
+    groupBtn.addEventListener('click', () => {
+      selectedStage = 'group';
+      renderGroupsList();
+      groupBtn.classList.add('bg-rose-500', 'text-white');
+      intermediateBtn.classList.remove('bg-rose-500', 'text-white');
+    });
+
     groupSelect.addEventListener('change', (event) => {
       renderPointsTable(event.target.value);
     });
+    
+    // Toggle sidebar on mobile
+    menuBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('-translate-x-full');
+    });
 
     document.addEventListener('DOMContentLoaded', () => {
-      renderPointsTable(groupSelect.value);
+      intermediateBtn.click();
     });
   </script>
 
 </body>
 </html>
+
+
 
 
 
